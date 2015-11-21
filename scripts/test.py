@@ -1,25 +1,22 @@
 __author__ = 'amit'
-import subprocess
+import subprocess, getpass
+# password = getpass.getpass()
 
+proc = subprocess.Popen(
+  ['sudo','-p','','-S','adduser','tia',
+   "--home", "/etc/karnikamittima",
+   "--shell", "/etc/sh"],
+  stdin=subprocess.PIPE)
+proc.stdin.write("edge@123"+'\n')
+proc.stdin.write("qwe"+'\n')
+proc.stdin.write("qwe"+'\n')
+proc.stdin.write(''+'\n')
+proc.stdin.write(''+'\n')
+proc.stdin.write(''+'\n')
+proc.stdin.write(''+'\n')
+proc.stdin.write(''+'\n')
+proc.stdin.write("Y"+'\n')
 
-# Ask the user for input
-host = raw_input("Enter a host to ping: ")
-
-# Set up the echo command and direct the output to a pipe
-p1 = subprocess.Popen([host], stdout=subprocess.PIPE)
-
-# Run the command
-output = p1.communicate()[0]
-print output
-# print '\npopen2:'
-#
-# proc = subprocess.Popen(['adduser'],
-#                         stdin=subprocess.PIPE,
-#                         stdout=subprocess.PIPE,
-#                         )
-# stdout_value = proc.communicate('tima')[0]
-# print '\tpass through:', repr(stdout_value)
-
-# cmd = ['sudo', 'ed', 'ls']
-# proc = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate("ls")
-# print proc
+# proc.stdin.write("tima")
+proc.stdin.close()
+proc.wait()

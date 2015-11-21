@@ -6,25 +6,57 @@
 </head>
 <body>
     <form action="/modify" method="post" name="loginForm">
+        <div>
+
+            <p>
+            <label for="userName">OLD Username</label>
+            <input type="text" name="olduserName" />
+            </p>
+
+            <p>
+            <label for="userName">New Username</label>
+            <input type="text" name="newuserName" />
+            </p>
+
+
+        </div>
+
+
+        <div>
         <p>
-            <label for="userName">Username</label>
-            <input type="text" name="userName" />
-        </p>
-        <p>
-            <label for="userPassword">Password</label>
-            <input type="password" name="userPassword" />
+            <label for="userPassword">New Password</label>
+            <input type="password" name="new_userPassword" />
         </p>
 
+            <p>
+            <label for="userPassword">Old Password</label>
+            <input type="password" name="old_userPassword" />
+        </p>
+        </div>
+
+
+        <p>
+            <label for="sys_pass">System password</label>
+            <input type="text" name="sys_pass" />
+        </p>
 
         <p>
             <label for="shell">Shell type</label>
             <input type="text" name="shell" />
         </p>
 
+        <div>
         <p>
-            <label for="home_folder">Home folder</label>
-            <input type="text" name="home_folder" />
+            <label for="home_folder">New Home folder</label>
+            <input type="text" name="new_home_folder" />
         </p>
+
+            <p>
+            <label for="home_folder">Old Home folder</label>
+            <input type="text" name="old_home_folder" />
+        </p>
+
+            </div>
         <input type="checkbox" name="superuser" value="True"> SUDO Permission<br>
         <p>
             <button type="submit">Submit</button>
