@@ -1,4 +1,4 @@
-HOW BUILD AND RUN
+HOW TO BUILD AND RUN
 =================
 
 * Activate virtual environment
