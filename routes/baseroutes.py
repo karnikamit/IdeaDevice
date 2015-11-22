@@ -36,7 +36,6 @@ def new_creds():
         details["sudo_privlage"] = request.form["superuser"]
     except Exception, e:
         details["sudo_privlage"] = "False"
-        print "Exception", e.__str__()
     r = create(details)
     print r
     return jsonify(details)
@@ -63,6 +62,5 @@ def mUser():
         details["sudo_privlage"] = request.form["superuser"]
     except Exception, e:
         details["sudo_privlage"] = "False"
-        print "Exception", e.__str__()
     res = modify(details)
     return jsonify({"response": res})

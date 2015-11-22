@@ -3,11 +3,16 @@ import subprocess
 
 
 def create(data):
-    proc = subprocess.Popen(['sudo','-p','','-S',
-                             'adduser', data["username"],
-                             "--home", data["home_folder"],
-                             "--shell", data["shell"]],
-                            stdin=subprocess.PIPE)
+    cmd = ['sudo','-p','','-S']
+    cmd.append("adduser")
+    cmd.append(data['username'])
+    if data["home_folder"]:
+        cmd.append("--home")
+        cmd.append(data["home_folder"])
+    if data["shell"]:
+        cmd.append("--shell")
+        cmd.append(data["shell"])
+    proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     proc.stdin.write(data["sys_pass"]+'\n')
     proc.stdin.write(data["password"]+'\n')
     proc.stdin.write(data["password"]+'\n')
@@ -18,7 +23,6 @@ def create(data):
     proc.stdin.write(''+'\n')
     proc.stdin.write("Y"+'\n')
     proc.stdin.close()
-    proc.wait()
     return "Done!"
 
 
@@ -58,8 +62,6 @@ def modify(data):
         proc = subprocess.Popen(cmd)
         use_sudo = proc.stdin
         if use_sudo:
-            print "use sudo"
-            print use_sudo
             proc.stdin.write(data["sys_pass"]+'\n')
             proc.stdin.close()
             proc.wait()
